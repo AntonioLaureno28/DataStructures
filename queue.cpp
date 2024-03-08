@@ -20,13 +20,15 @@ struct queue
     void enqueue(int item){
         if(isFull()){
             cout << "A fila esta cheia\n";
+            return;
         } else if(isEmpty()) {
             head = tail = 0;
             items[tail] = item;
         }
         else {
+            tail++;
             items[tail % max_itens] = item;
-            tail++;          
+                      
         }
     }
 
@@ -48,7 +50,7 @@ struct queue
             cout << "Fila vazia";
         } else {
             cout << "[ ";
-            for (int i = head; i < tail; i++){
+            for (int i = head; i <= tail; i++){
                 cout << items[i % max_itens] << " ";
             }
             cout << "]\n";
